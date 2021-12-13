@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinado Zona</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="shortcut icon" href="../../img/Púrpura Rectángulos Despacho Jurídico Logo.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+            <img src="../../img/Púrpura Rectángulos Despacho Jurídico Logo.png"
+                style="width: 74px; border: 1px;border-radius: 13px;">
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Orden Pedido</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item">Cambiar contraseña</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar Cesión</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div>
+                        <div style="margin-right: 5px;">
+                            <h4 id="idUserLogin"></h4>
+                        </div>
+            </form>
+        </div>
+    </nav>
+    <!-- Modal Crear-->
+    <div class="modal fade bd-example-modal-lg" id="exampleModales" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Orden</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fechaOrden">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Producto</label>
+                            <select class="form-control form-control" id="retornarSelectProducto">
+                                <option selected>Producto</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="cantidadProducto">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Precio</label>
+                            <input type="number" readonly class="form-control" id="precioProducto">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Total Pedido</label>
+                            <input type="number" readonly class="form-control" id="TotalOrden">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" id="agregarProduct" class="btn btn-success"
+                                style="margin-top: 31px;">Agregar</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#visualizarOrden"
+                        style="float: right;"  onclick="visualizarPedido()">Visualizar
+                        Orden</button>
+                    <button type="button" class="btn btn-primary"
+                        onclick="validarCamposVaciosPedidos()">Crear Orden</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update-->
+    <div class="modal fade bd-example-modal-lg" id="updateUser" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label class="form-label">Identificación</label>
+                            <input type="text" class="form-control" id="exampleInputIdentificacionRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="exampleInputNombreRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="exampleInputDireccionRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Celular</label>
+                            <input type="text" class="form-control" id="exampleInputCelularRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmailRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPasswordRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Zona</label>
+                            <input type="text" class="form-control" id="exampleInputZonaRetorna">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Cargo</label>
+                            <select class="form-control form-control" id="exampleInputCargoRetorna">
+                                <option selected>Perfil</option>
+                                <option value="COORD">Coordinador de Zona</option>
+                                <option value="ASE">Asesor Comercial</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateUserData()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Visualizar Pedido-->
+    <div class="modal fade bd-example-modal-smg" id="visualizarOrden" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-smg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Factura</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <p id="fechaActual"><Strong></Strong></p>
+                            <p>------------------------------------------------------------------------</p>
+                            <table class="table table-sm">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Accion</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="retornarDataAgregada">
+                                </tbody>
+                              </table>
+                              <p>------------------------------------------------------------------------</p>
+                              <p id="totalDescriminado"><Strong></Strong></p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container animate__animated animate__bounceIn">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Button trigger modal -->
+                <center>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModales">
+                        Crear Orden De Pedido
+                    </button>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12"
+            style="padding: 3%; border: 1px; border-radius: 15px; margin-top: 5%; background: white;">
+            <h2 style="text-align: center;">Ordenes De Pedido</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Numero de Orden</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="retornarTablaCliente">
+
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="ordenesPedido.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{
+    "registerDay": "2021-12-12",
+    "status": "PENDIENTE",
+    "salesMan": {
+        "id": 2,
+        "identification": "1007400892",
+        "name": "Juan Carlos Coronado Bonilla",
+        "birthtDay": null,
+        "monthBirthtDay": null,
+        "address": "Calle 98",
+        "cellPhone": "3107520474",
+        "email": "juan@gmail.com",
+        "password": "12345kfc*",
+        "zone": "ZONA 2",
+        "type": "ASE"
+    },
+    "products": {
+        "AP-903": {
+            "reference": "AP-903",
+            "brand": "SKU",
+            "category": "SUPLEMENTO",
+            "objetivo": "AUMENTO VOLUMEN MUSCULAR",
+            "description": "ISO CLEAN X 1000 MG 5LB",
+            "availability": true,
+            "price": 10000,
+            "quantity": 20,
+            "photography": "www.catalog.com/sku.png"
+        },
+        "AP-904": {
+            "reference": "AP-904",
+            "brand": "SHAMPOO",
+            "category": "SUPLEMENTO",
+            "objetivo": "AUMENTO VOLUMEN MUSCULAR",
+            "description": "ISO CLEAN X 1000 MG 5LB",
+            "availability": true,
+            "price": 15000,
+            "quantity": 20,
+            "photography": "www.catalog.com/sku.png"
+        },
+        "AP-905": {
+            "reference": "AP-905",
+            "brand": "GEL",
+            "category": "SUPLEMENTO",
+            "objetivo": "AUMENTO VOLUMEN MUSCULAR",
+            "description": "ISO CLEAN X 1000 MG 5LB",
+            "availability": true,
+            "price": 20000,
+            "quantity": 20,
+            "photography": "www.catalog.com/sku.png"
+        }
+    },
+    "quantities": {
+        "AP-903": 2,
+        "AP-904": 4,
+        "AP-905": 1
+    }
+}

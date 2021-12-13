@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inventarioProductos</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="img/Púrpura Rectángulos Despacho Jurídico Logo.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+            <img src="img/Púrpura Rectángulos Despacho Jurídico Logo.png"
+                style="width: 74px; border: 1px;border-radius: 13px;">
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="administracionUsuarios.html">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="inventarioProductos.html">Productos</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item">Cambiar contraseña</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar Cesión</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div>
+                        <div style="margin-right: 5px;">
+                            <h4 id="idUserLogin"></h4>
+                        </div>
+            </form>
+        </div>
+    </nav>
+    <!-- Modal Crear -->
+    <div class="modal fade" id="exampleModales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Referencia</label>
+                            <input type="text" class="form-control" id="exampleReferenciaProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Nombre</label>
+                            <input type="email" class="form-control" id="exampleNombreProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Categoria</label>
+                            <input type="text" class="form-control" id="exampleCategoriaProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Disponibilidad</label>
+                            <select class="form-control form-control" id="exampleDisponibilidadProdcuto">
+                                <option value="true">SI</option>
+                                <option value="false">NO</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Stock</label>
+                            <input type="number" class="form-control" id="exampleSockProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Foto</label>
+                            <input type="text" class="form-control" id="exampleFotoProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Precio</label>
+                            <input type="number" class="form-control" id="examplePrecioProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Descripciòn</label>
+                            <input type="text" class="form-control" id="exampleDescripcionProducto" placeholder="">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="exampleFormControlTextarea1">Objetivo</label>
+                            <textarea class="form-control" id="exampleObjetivoProducto" rows="3"></textarea>
+                        </div>
+                        <div class="custom-file" style="margin-top: 30px; display: none;">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                            <label class="custom-file-label" for="customFileLang">Foto</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                        onclick="validarCamposVaciosProductos()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Eliminar-->
+    <div class="modal fade" id="exampleEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Referencia</label>
+                        <input type="email" class="form-control" id="eliminarReference" placeholder="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteProduct()">Eliminar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Actualizar-->
+    <div class="modal fade" id="exampleActualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Referencia</label>
+                            <input type="text" class="form-control" id="updateReferenciaProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Nombre</label>
+                            <input type="email" class="form-control" id="updateNombreProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Categoria</label>
+                            <input type="text" class="form-control" id="updateCategoriaProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Disponibilidad</label>
+                            <select class="form-control form-control" id="updateDisponibilidadProdcuto">
+                                <option value="true">SI</option>
+                                <option value="false">NO</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Stock</label>
+                            <input type="number" class="form-control" id="updateSockProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Foto</label>
+                            <input type="text" class="form-control" id="updateFotoProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Precio</label>
+                            <input type="number" class="form-control" id="updatePrecioProducto" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleFormControlInput1">Descripciòn</label>
+                            <input type="text" class="form-control" id="updateDescripcionProducto" placeholder="">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="exampleFormControlTextarea1">Objetivo</label>
+                            <textarea class="form-control" id="updateObjetivoProducto" rows="3"></textarea>
+                        </div>
+                        <div class="custom-file" style="margin-top: 30px; display: none;">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                            <label class="custom-file-label" for="customFileLang">Foto</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateProductData()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ver foto-->
+    <div class="modal fade" id="verFoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Foto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="card-img-top" id="imagenModal" src="" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container animate__animated animate__bounceIn">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Button trigger modal -->
+                <center>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModales">
+                        Crear Producto
+                    </button>
+                </center>
+            </div>
+            <div class="col-md-6">
+                <!-- Button trigger modal -->
+                <center>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleEliminar">
+                        Eliminar Producto
+                    </button>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12"
+            style="padding: 3%; border: 1px; border-radius: 15px; margin-top: 5%; background: white;">
+            <h2 style="text-align: center;">Inventario de productos</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Referencia</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Objetivo</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Disponibilidad</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="retornarTablaProducto">
+
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="inventarioProductos.js"></script>
+</body>
+
+</html>
