@@ -30,9 +30,15 @@ function registrarData() {
 }
 function jsonUser() {
 
+    let posicion= $("#exampleInputFechaNacimiento").val();
+    let indexPosicion= posicion.indexOf("-");
+    let mesCumpleanos = posicion.substring(indexPosicion+1,indexPosicion+3);
+
     userData = {
         identification: $("#exampleInputIdentificacion").val(),
         name: $("#exampleInputNombre").val(),
+        birthtDay: $("#exampleInputFechaNacimiento").val(),
+        monthBirthtDay : mesCumpleanos,
         address: $("#exampleInputDireccion").val(),
         cellPhone: $("#exampleInputCelular").val(),
         email: $("#exampleInputEmail").val(),
@@ -48,6 +54,7 @@ function validarDatos() {
 
     let identificacion = $("#exampleInputIdentificacion").val();
     let name = $("#exampleInputNombre").val();
+    let fecha = $("#exampleInputFechaNacimiento").val();
     let direccion = $("#exampleInputDireccion").val();
     let celular = $("#exampleInputCelular").val();
     let email = $("#exampleInputEmail").val();
@@ -57,7 +64,7 @@ function validarDatos() {
 
 
 
-    if (identificacion == "" || name == "" || direccion == "" || celular == "" || email == "" || contrasena == "" || zona == "" || Cargo == "") {
+    if (identificacion == "" || name == "" || direccion == "" || celular == "" || email == "" || contrasena == "" || zona == "" || Cargo == "" || fecha == "") {
         swal("info", "Hay campos vacios", "warning");
     } else if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email)) {
         swal("info", "Email invalido", "warning");
@@ -131,7 +138,7 @@ function dataUsers(respuesta) {
 
     respuesta.forEach(element => {
         cadena += "<tr><th>" + element.identification + "</th><td>" + element.name + "</td><td>" + element.address + "</td><td>" + element.cellPhone + "</td><td>" + element.email + "</td><td>" + element.zone + "</td><td>" + element.type + "</td><td>"
-        cadena += "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#updateUser' style='width: auto; margin-left: 16px' onclick=\"dataUpdate( " + element.id + ",\'" +element.identification + "',\'" + element.name + "',\'" + element.address + "',\'" + element.cellPhone + "',\'" + element.email + "',\'" + element.zone + "',\'" + element.type + "',\'" + element.password + "')\">Update</button></td></tr>"
+        cadena += "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#updateUser' style='width: auto; margin-left: 16px' onclick=\"dataUpdate( " + element.id + ",\'" +element.identification + "',\'" + element.name + "',\'" + element.birthtDay + "',\'" + element.address + "',\'" + element.cellPhone + "',\'" + element.email + "',\'" + element.zone + "',\'" + element.type + "',\'" + element.password + "')\">Update</button></td></tr>"
     });
 
     $("#retornarTablaCliente").html(cadena);
@@ -139,11 +146,11 @@ function dataUsers(respuesta) {
 /**
  * Actualizar Datos User
  */
-function dataUpdate(ides,identificacion, name, direccion, celular, email, zona, cargo, password) {
-    console.log(ides,identificacion,name,direccion,celular,email,zona,cargo,password);
+function dataUpdate(ides,identificacion, name,fecha, direccion, celular, email, zona, cargo, password) {
     id = ides;
     $("#exampleInputIdentificacionRetorna").val(identificacion);
     $("#exampleInputNombreRetorna").val(name);
+    $("#exampleInputFechaNacimientoRetorna").val(fecha);
     $("#exampleInputDireccionRetorna").val(direccion);
     $("#exampleInputCelularRetorna").val(celular);
     $("#exampleInputEmailRetorna").val(email);
@@ -178,10 +185,16 @@ function updateUserData() {
 
 function jsonUpdateUser() {
 
+    let posicion= $("#exampleInputFechaNacimiento").val();
+    let indexPosicion= posicion.indexOf("-");
+    let mesCumpleanos = posicion.substring(indexPosicion+1,indexPosicion+3);
+
     useData = {
         id: id,
         identification: $("#exampleInputIdentificacionRetorna").val(),
         name: $("#exampleInputNombreRetorna").val(),
+        birthtDay: $("#exampleInputFechaNacimientoRetorna").val(),
+        monthBirthtDay:mesCumpleanos,
         address: $("#exampleInputDireccionRetorna").val(),
         cellPhone: $("#exampleInputCelularRetorna").val(),
         email: $("#exampleInputEmailRetorna").val(),
