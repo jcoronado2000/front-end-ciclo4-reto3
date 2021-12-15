@@ -182,10 +182,12 @@ $(document).ready(function () {
     let userJson = sessionStorage.getItem("user");
     if (userJson == null) {
         window.location.href = "index.html";
-    } else {
-        retornarDataMongo();
-        let userJs = JSON.parse(userJson);
+    }
+    let userJs = JSON.parse(userJson);
+    if (userJs.type == "ADM") {
+        $("#idUserCargo").html("Administrador Sistema");
         $("#idUserLogin").html(userJs.name);
+        retornarDataMongo();
     }
 
     $("#cerrarSesion").click(function () {

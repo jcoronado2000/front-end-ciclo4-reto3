@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 </head>
 
 
@@ -45,148 +48,44 @@
                     <div>
                         <div style="margin-right: 5px;">
                             <h4 id="idUserLogin"></h4>
+                            <p id="idUserCargo"></p>
                         </div>
             </form>
         </div>
     </nav>
-    <!-- Modal Crear-->
-    <div class="modal fade bd-example-modal-lg" id="exampleModales" tabindex="-1" role="dialog"
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="exampleModalVer" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear Usuario</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Orden de pedido</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row form-group">
-                        <div class="col-md-6">
-                            <label class="form-label">Identificación</label>
-                            <input type="text" class="form-control" id="exampleInputIdentificacion">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputNombre">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="exampleInputDireccion">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Celular</label>
-                            <input type="text" class="form-control" id="exampleInputCelular">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Zona</label>
-                            <input type="text" class="form-control" id="exampleInputZona">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Cargo</label>
-                            <select class="form-control form-control" id="exampleInputCargo">
-                                <option selected>Perfil</option>
-                                <option value="COORD">Coordinador de Zona</option>
-                                <option value="ASE">Asesor Comercial</option>
-                            </select>
-                        </div>
-
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Disponible</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody id="verDetallePedido">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="validarDatos()">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Eliminar -->
-    <div class="modal fade" id="exampleEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Identificacion</label>
-                        <input type="email" class="form-control" id="exampleEliminarUser" placeholder="">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" onclick="eliminarUser()">Eliminar </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Update-->
-    <div class="modal fade bd-example-modal-lg" id="updateUser" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row form-group">
-                        <div class="col-md-6">
-                            <label class="form-label">Identificación</label>
-                            <input type="text" class="form-control" id="exampleInputIdentificacionRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputNombreRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="exampleInputDireccionRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Celular</label>
-                            <input type="text" class="form-control" id="exampleInputCelularRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmailRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPasswordRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Zona</label>
-                            <input type="text" class="form-control" id="exampleInputZonaRetorna">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Cargo</label>
-                            <select class="form-control form-control" id="exampleInputCargoRetorna">
-                                <option selected>Perfil</option>
-                                <option value="COORD">Coordinador de Zona</option>
-                                <option value="ASE">Asesor Comercial</option>
-                            </select>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="updateUserData()">Guardar</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -201,20 +100,23 @@
             style="padding: 3%; border: 1px; border-radius: 15px; margin-top: 5%; background: white;">
             <h2 style="text-align: center;">Administracion ordenes de pedido</h1>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table id="tablax" class="table table-sm">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col">Numero Orden</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Asesor Comercial</th>
-                                <th scope="col">Pedido</th>
-                                <th scope="col">Validacion</th>
+                                <th scope="col">Ver Pedido</th>
+                                <th scope="col">Actualizar</th>
                             </tr>
                         </thead>
-                        <tbody id="retornarTablaCliente">
+                        <tbody id="retornarTablaClienteOrderZona" >
 
                         </tbody>
                     </table>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination pagination-lg pager" id="developer_page"></ul>
+                    </div>
                 </div>
         </div>
     </div>
@@ -229,6 +131,10 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+
     <script src="aprobacionOrdenes.js"></script>
 </body>
 

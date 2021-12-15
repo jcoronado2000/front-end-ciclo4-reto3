@@ -46,6 +46,7 @@
                     <div>
                         <div style="margin-right: 5px;">
                             <h4 id="idUserLogin"></h4>
+                            <p id="idUserCargo"></p>
                         </div>
             </form>
         </div>
@@ -94,10 +95,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#visualizarOrden"
-                        style="float: right;"  onclick="visualizarPedido()">Visualizar
+                        style="float: right;" onclick="visualizarPedido()">Visualizar
                         Orden</button>
-                    <button type="button" class="btn btn-primary"
-                        onclick="validarCamposVaciosPedidos()">Crear Orden</button>
+                    <button type="button" class="btn btn-primary" onclick="validarCamposVaciosPedidos()">Crear
+                        Orden</button>
                 </div>
             </div>
         </div>
@@ -168,11 +169,11 @@
         <div class="modal-dialog modal-smg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Factura</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Factura</h5>
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
@@ -181,26 +182,27 @@
                             <p>------------------------------------------------------------------------</p>
                             <table class="table table-sm">
                                 <thead>
-                                  <tr>
-                                    <th scope="col">Referencia</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">Cantidad</th>
-                                    <th scope="col">Precio</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Accion</th>
-                                  </tr>
+                                    <tr>
+                                        <th scope="col">Referencia</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Accion</th>
+                                    </tr>
                                 </thead>
                                 <tbody id="retornarDataAgregada">
                                 </tbody>
-                              </table>
-                              <p>------------------------------------------------------------------------</p>
-                              <p id="totalDescriminado"><Strong></Strong></p>
-                            
+                            </table>
+                            <p>------------------------------------------------------------------------</p>
+                            <p id="totalDescriminado"><Strong></Strong></p>
+
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        style="float: right;">Cerrar</button>
                 </div>
             </div>
         </div>

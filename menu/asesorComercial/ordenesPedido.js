@@ -59,7 +59,7 @@ function functionGuardarRegistro(productos, quantities) {
             let respustaJsonCreado = response.responseText;
             let idRespues = JSON.parse(respustaJsonCreado);
             if (response.status == 201) {
-                swal("Registro exitoso", "Numero de orden " + idRespues.id, "success")
+                swal("Registro exitoso", "Numero de orden" + idRespues.id, "success")
                     .then((value) => {
                         window.location.reload();
                     });
@@ -77,7 +77,7 @@ function jsonOders(products, quantities) {
     let result = date.toISOString();
     dataProduct = {
         registerDay: result,
-        status: "PENDIENTE",
+        status: "Pendiente",
         salesMan: userJs,
         products,
         quantities
@@ -103,7 +103,7 @@ function retornarDataMongo() {
 function retornarDataMongoOrder() {
     $.ajax({
         method: "GET",
-        url: endPointOrder + "/all",
+        url: endPointOrder + "/zona/" + userJs.zone,
         success: function (data) {
             retornarDataTableOrder(data);
         }
@@ -146,7 +146,7 @@ function eliminarOrden(idReferenceEliminar) {
 }
 $("#cerrarSesion").click(function () {
     sessionStorage.removeItem("user");
-    window.location.href = "../../index.html";
+    window.location.href = "index.html";
 })
 
 $("#retornarSelectProducto").change(function () {
@@ -257,10 +257,13 @@ function guardarDataJsonOrdenTabla(idReference, producto, cantidad, precio, vent
 if (userJson == null) {
     window.location.href = "../../index.html";
 } else {
-    retornarDataMongo();
-    retornarDataMongoOrder();
     userJs = JSON.parse(userJson);
-    $("#idUserLogin").html(userJs.name);
+    if(userJs.type == "ASE" ){
+        $("#idUserCargo").html("Asesor Comercial");
+        $("#idUserLogin").html(userJs.name);
+        retornarDataMongo();
+        retornarDataMongoOrder();
+    }
 }
 
 

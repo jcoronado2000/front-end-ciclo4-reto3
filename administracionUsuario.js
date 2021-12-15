@@ -200,12 +200,13 @@ function jsonUpdateUser() {
  */
 $(document).ready(function(){
     let userJson = sessionStorage.getItem("user");
+    let userJs = JSON.parse(userJson);
     if(userJson == null){
         window.location.href="index.html";
-    }else{
+    }if(userJs){
         getCliente();
-        let userJs = JSON.parse(userJson);
         $("#idUserLogin").html(userJs.name);
+        $("#idUserCargo").html("Administrador Sistema");
     }
 
     $("#cerrarSesion").click(function(){
