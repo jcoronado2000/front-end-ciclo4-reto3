@@ -2,8 +2,8 @@
  * EndPoint
  */
 
-const endPointUser = "http://localhost:8080/api/user";
-//const endPointUser = "http://150.230.88.187:8080/api/user"
+//const endPointUser = "http://localhost:8080/api/user";
+const endPointUser = "http://150.230.88.187:8080/api/user"
 
 let email;
 let password;

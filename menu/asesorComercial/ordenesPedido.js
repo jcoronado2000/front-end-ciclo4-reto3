@@ -9,10 +9,12 @@
 /**
  * endPoint de inventario
  */
-const endPointProducto = "http://localhost:8080/api/supplements";
-const endPointUser = "http://localhost:8080/api/user";
-const endPointOrder = "http://localhost:8080/api/order";
-//const endPointProducto = "http://150.230.88.187:8080/api/supplements" 
+//const endPointProducto = "http://localhost:8080/api/supplements";
+//const endPointUser = "http://localhost:8080/api/user";
+//const endPointOrder = "http://localhost:8080/api/order";
+const endPointProducto = "http://150.230.88.187:8080/api/supplements" 
+const endPointUser = "http://150.230.88.187:8080/api/user" 
+const endPointOrder = "http://150.230.88.187:8080/api/order" 
 let userJson = sessionStorage.getItem("user");
 let userJs;
 // carga de datos

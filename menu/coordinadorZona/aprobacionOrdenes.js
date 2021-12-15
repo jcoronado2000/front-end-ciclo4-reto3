@@ -1,7 +1,8 @@
 /**
  * Constantes
  */
-const endPointOrder = "http://localhost:8080/api/order";
+//const endPointOrder = "http://localhost:8080/api/order";
+const endPointOrder = "http://150.230.88.187:8080/api/order"
 /**
  * Variables
  */
